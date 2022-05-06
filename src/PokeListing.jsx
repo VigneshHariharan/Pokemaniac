@@ -18,6 +18,7 @@ const PokeListing = () => {
   if (isListingLoading) return <div>Loading</div>;
   return (
     <div className="container">
+      <img src="/images/pokemons/014Kakuna.png" alt="ma" />
       <div className="pokelisting-container">
         {pokeListing.order?.map((pokemonName) => {
           const pokemon = pokeListing[pokemonName];

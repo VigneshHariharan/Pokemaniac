@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: 'docs',
 
   },
-  base: 'https://vigneshhariharan.github.io/Pokemaniac/',
+  base: '/Pokemaniac/',
   root: '.',
   resolve: {
     alias: {

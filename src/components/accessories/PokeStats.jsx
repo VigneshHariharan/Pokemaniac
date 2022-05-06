@@ -1,16 +1,6 @@
 const PokeStats = ({ stats }) => {
-  const statItems = stats.reduce((result, currentStats) => {
-    return [
-      ...result,
-      {
-        statType: currentStats?.stat?.name,
-        statValue: currentStats?.base_stat,
-      },
-    ];
-  }, []);
-
-  const totalStats = statItems.reduce(
-    (result, stat) => result + stat.statValue,
+  const totalStats = stats.reduce(
+    (result, statObj) => result + statObj.stat,
     0
   );
 

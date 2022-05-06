@@ -17,7 +17,7 @@
 // Steel;
 // Fairy;
 const PokemonType = ({ typeObj }) => {
-  const typeName = typeObj.type.name;
+  const typeName = typeObj;
   return (
     <div className="type">
       <p className={`--type-${typeName}`}>{typeName?.toUpperCase()}</p>

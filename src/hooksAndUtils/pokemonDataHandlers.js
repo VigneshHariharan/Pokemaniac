@@ -1,5 +1,6 @@
 const API_URL = "https://pokeapi.co/api/v2/pokemon";
 const fetchAllPokemonWithDetailsKey = 'allPokemonKeys';
+import allPokemonKeys from '@data/allPokemonKeys.json'
 
 const setItemInCache = (key, value) => {
 
@@ -9,8 +10,9 @@ const setItemInCache = (key, value) => {
 };
 
 const getItemFromCache = async (key) => {
-    const data = await fetch('src/data/allPokemonKeys.json')
-    const pokemonData = await data.json()
+    // const data = await fetch('src/data/allPokemonKeys.json')
+    const pokemonData = await allPokemonKeys;
+    // const pokemonData = await data.json()
     return pokemonData || null;
     // if (localStorage.getItem(key)) return JSON.parse(localStorage.getItem(key));
     // return null;

@@ -1,7 +1,7 @@
 import React from "react";
-import PokemonType from "./PokemonType";
-import PokeStats from "./PokeStats";
-import { usePokemons } from "./usePokemonDataSet";
+import PokemonType from "../Accessories/PokemonType";
+import PokeStats from "../../hooksAndUtils/PokeStats";
+import { usePokemons } from "../../hooksAndUtils/usePokemonDataSet";
 
 const PokeListing = () => {
   const {

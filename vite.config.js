@@ -6,8 +6,11 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'docs'
+    outDir: 'docs',
+
   },
+  base: 'https://vigneshhariharan.github.io/Pokemaniac/',
+  root: '.',
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),

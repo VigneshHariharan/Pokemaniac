@@ -1,4 +1,3 @@
-import React from "react";
 // Normal;
 // Fire;
 // Water;

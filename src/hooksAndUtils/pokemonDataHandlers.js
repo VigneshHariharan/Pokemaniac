@@ -9,7 +9,7 @@ const setItemInCache = (key, value) => {
 };
 
 const getItemFromCache = async (key) => {
-    const data = await fetch('./src/allPokemonKeys.json')
+    const data = await fetch('src/data/allPokemonKeys.json')
     const pokemonData = await data.json()
     return pokemonData || null;
     // if (localStorage.getItem(key)) return JSON.parse(localStorage.getItem(key));

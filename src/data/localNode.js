@@ -77,7 +77,8 @@ const fetchAllPokemonWithDetails = async () => {
                     weight: pokemonData.weight,
                     height: pokemonData.height,
                     types: types,
-                    stats: stats
+                    stats: stats,
+                    sprites: { front_default: pokemonData?.sprites?.front_default }
                 }
             })
         }, {})

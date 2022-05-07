@@ -2,6 +2,7 @@ import React from "react";
 import PokemonType from "@components/accessories/PokemonType";
 import PokeStats from "@components/accessories/PokeStats";
 import { usePokemons } from "@hooksAndUtils/usePokemonDataSet";
+import { getImageUrlForPokemon } from "@hooksAndUtils/utils";
 
 const PokeListing = () => {
   const {
@@ -11,23 +12,34 @@ const PokeListing = () => {
     isPokeDetailsLoading,
     detailsErrorMessage,
     pokeDetails,
+    resetToDefaultFilters,
+    handleFilters,
   } = usePokemons();
 
-  console.log("Object.values(pokeListing)", pokeListing.order);
-
   if (isListingLoading) return <div>Loading</div>;
+
   return (
     <div className="container">
-      <img src="public/images/pokemons/014Kakuna.png" alt="ma" />
+      <button onClick={() => handleFilters({ type: "fire" })}>fire</button>
+      <button onClick={() => handleFilters({ type: "water" })}>water</button>
+      <button onClick={() => handleFilters({ type: "electric" })}>
+        electric
+      </button>
+      <button onClick={() => resetToDefaultFilters()}>Reset to default</button>
+
+      <img
+        src={"/Pokemaniac/docs" + `/images/pokemons/014Kakuna.png`}
+        alt="ma"
+      />
       <div className="pokelisting-container">
-        {pokeListing.order?.map((pokemonName) => {
+        {pokeListing.order?.map((pokemonName, index) => {
           const pokemon = pokeListing[pokemonName];
           if (!pokemon || pokemon instanceof Array) {
             return null;
           }
           return (
             <div
-              key={pokemon.name || pokemon.sprites?.front_default}
+              key={pokemon.name}
               className="pokelisting-card-container"
 
               // onClick={() => handlePokemonDetails(pokemon.name)}

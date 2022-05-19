@@ -78,7 +78,8 @@ const fetchAllPokemonWithDetails = async () => {
                     height: pokemonData.height,
                     types: types,
                     stats: stats,
-                    sprites: { front_default: pokemonData?.sprites?.front_default }
+                    sprites: { front_default: pokemonData?.sprites?.front_default },
+                    order: pokemonData.order
                 }
             })
         }, {})

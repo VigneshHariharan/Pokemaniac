@@ -48,7 +48,7 @@ h4,
 h5,
 h6,
 p {
-  margin: 0
+  margin: 0;
 }
 
 :root {
@@ -65,18 +65,19 @@ p {
   max-width: 1153px;
   margin: auto;
   padding-top: 24px;
-
 }
+
 .pokelisting-container {
   display: flex;
   flex-wrap: wrap;
+  max-width: 703px;
+
   row-gap: 16px;
   column-gap: 8px;
-
 }
 
 .pokelisting-card-container {
-  width: 190px;
+  min-width: 190px;
   height: 246.66px;
   border-width: 1px;
   border-style: solid;

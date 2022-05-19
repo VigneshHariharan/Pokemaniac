@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [react(), splitVendorChunkPlugin()],
   build: {
     outDir: 'docs'
-  }, 
-  base: '/Pokemaniac/docs/',
+  },
+  base: '/Pokemaniac',
   root: '.',
   resolve: {
     alias: {

@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeListing from "@components/main/PokeListing";
+import PokemonDetails from "@components/main/PokemonDetails";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <PokeListing />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route
+              path="/Pokemaniac"
+              // path="/"
+              element={<PokeListing />}
+              key="pokelisting"
+            />
+            <Route
+              path="/Pokemaniac/:pokemon"
+              // path="/:pokemon"
+              element={<PokemonDetails />}
+              key="pokeDetails"
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import PokemonType from "@components/accessories/PokemonType";
 import PokeStats from "@components/accessories/PokeStats";
 import { usePokemons } from "@hooksAndUtils/usePokemonDataSet";
 import { getImageUrlForPokemon } from "@hooksAndUtils/utils";
+import { Navbar } from "@components/common";
 
 const PokeListing = () => {
   const {
@@ -14,26 +15,36 @@ const PokeListing = () => {
     pokeDetails,
     resetToDefaultFilters,
     handleFilters,
+    pokemonTypes,
+    typesFiltered,
   } = usePokemons();
-  const [selectTeamMode, setSelectTeamMode] = useState(true);
 
   if (isListingLoading) return <div>Loading</div>;
 
   return (
-    <div className="container">
-      <div>
-        <button onClick={() => setSelectTeamMode(!selectTeamMode)}>
-          Switch to select mode
-        </button>
-      </div>
-      <button onClick={() => handleFilters({ type: "fire" })}>fire</button>
-      <button onClick={() => handleFilters({ type: "water" })}>water</button>
-      <button onClick={() => handleFilters({ type: "electric" })}>
-        electric
-      </button>
-      <button onClick={() => resetToDefaultFilters()}>Reset to default</button>
-      {selectTeamMode ? (
-        <div className="pokelisting-container">
+    <div>
+      <Navbar />
+      <div className="container">
+        {/* <div className="pokelisting-types-listing">
+        {pokemonTypes &&
+          pokemonTypes?.map(({ name }) => (
+            <button
+              key={name}
+              className={
+                typesFiltered?.includes(name) ? "btn-primary" : "btn-basic"
+              }
+              onClick={() => handleFilters({ type: name })}
+            >
+              {name}
+            </button>
+          ))}
+      </div> */}
+        {/* <button onClick={() => resetToDefaultFilters()}>Reset to default</button> */}
+
+        <div>
+          <h2 className="inline">List of all pokemons</h2>
+        </div>
+        <div className="flex flex-wrap gap-4 mt-8 mx-auto justify-between w-full ">
           {pokeListing.order?.map((pokemonName, index) => {
             const pokemon = pokeListing[pokemonName];
             if (!pokemon || pokemon instanceof Array) {
@@ -41,17 +52,13 @@ const PokeListing = () => {
             }
             return (
               <div
-                key={pokemon.order}
-                className="pokelisting-card-container"
-
-                // onClick={() => handlePokemonDetails(pokemon.name)}
+                key={pokemonName}
+                className="cursor-pointer px-8 py-4 rounded-sm transition-all ease-in-out delay-2  hover:bg-slate-100 hover:dark:bg-slate-800"
+                onClick={() => handlePokemonDetails(pokemon.name)}
               >
                 <h5>{pokemon.name?.toUpperCase()}</h5>
                 <img
-                  src={
-                    pokemon?.sprites?.front_default ||
-                    "/public/images/pokeball.svg"
-                  }
+                  src={pokemon?.sprites?.front_default || "images/pokeball.svg"}
                   alt={pokemon.name + " image"}
                   className="pokemon-front-image"
                 />
@@ -62,16 +69,14 @@ const PokeListing = () => {
                 </div>
                 <PokeStats stats={pokemon.stats} />
                 <div>
-                  <p>Weight - {pokemon.weight}</p>
-                  <p>Height - {pokemon.height}</p>
+                  <p>Weight - {pokemon.weight} kg</p>
+                  <p>Height - {pokemon.height} inches</p>
                 </div>
               </div>
             );
           })}
         </div>
-      ) : (
-        <div>Select team</div>
-      )}
+      </div>
     </div>
   );
 };

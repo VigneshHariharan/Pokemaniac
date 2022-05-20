@@ -37,10 +37,6 @@
   }
 }
 
-button {
-  font-size: calc(10px + 2vmin);
-}
-
 h1,
 h2,
 h3,
@@ -53,12 +49,39 @@ p {
 
 :root {
   --main-bg-color: #ffffff;
+  --button-color: #ffffff;
+  --button-hover-color: #efefef;
+  --button-selected-color: #e2e1e1;
+
   --navbar-bg-color: #fefef8;
   --border-color-1: #afafaf;
   --text-color: #151515;
   --border-radius: 4px;
+  --button-font-size: 18px;
 }
 
+button {
+  font-size: calc(10px + 2vmin);
+  background-color: var(--button-color);
+
+  color: var(--text-color);
+  border: 1px solid var(--border-color-1);
+  border-radius: var(--border-radius);
+  box-shadow: none;
+  font-size: var(--button-font-size);
+  outline: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.pokelisting-types-listing-selected {
+  background-color: var(--button-selected-color);
+}
 .container {
   background-color: var(--main-bg-color);
   color: var(--text-color);
@@ -70,7 +93,7 @@ p {
 .pokelisting-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 703px;
+  max-width: 1153px;
 
   row-gap: 16px;
   column-gap: 8px;

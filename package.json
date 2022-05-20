@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "export NODE_OPTIONS='--max-old-space-size=8012' && vite build",
+    "build": "export NODE_OPTIONS='--max-old-space-size=8012' && vite build --base='/Pokemaniac'",
     "preview": "vite preview",
     "t-watch": "npx postcss src/index.css -o src/compiled.css"
   },

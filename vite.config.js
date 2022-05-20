@@ -6,8 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), splitVendorChunkPlugin()],
   build: {
-    outDir: 'docs',
-    base: '/Pokemaniac'
+    outDir: 'docs'
   },
   // base: '/Pokemaniac',
   root: '.',

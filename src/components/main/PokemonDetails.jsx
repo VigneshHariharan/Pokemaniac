@@ -1,12 +1,14 @@
 import { usePokemonDetails } from "@hooksAndUtils/usePokemonDetails";
 // import { use } from "react-router-dom";
 import { Navbar } from "@components/common";
+import { usePokemonTeam } from "@hooksAndUtils/usePokemonTeam";
 
 const PokemonDetails = () => {
   const { pokeDetails, isPokeDetailsLoading, detailsErrorMessage } =
     usePokemonDetails();
+  const { addPokemonToTeam } = usePokemonTeam();
 
-  if (isPokeDetailsLoading) return <div>Loading</div>;
+  // if (isPokeDetailsLoading) return <div>Loading</div>;
   return (
     <div>
       <Navbar />
@@ -15,6 +17,9 @@ const PokemonDetails = () => {
           <h2>{pokeDetails?.name || ""}</h2>
         </div>
       </div>
+      <button onClick={() => addPokemonToTeam(pokeDetails)}>
+        Add this pokemon team
+      </button>
     </div>
   );
 };

@@ -76,7 +76,6 @@ export const usePokemons = () => {
         await fetchAllPokemonTypes()
       ])
       setIsDataLoading(false)
-      console.log('Pokemons : ', pokemons)
       setPokeListing(pokemons)
       setPokemonDataResponse(pokemons)
       setIsListingErrorMessage(pokemons.errorMessage)

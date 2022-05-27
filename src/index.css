@@ -17,11 +17,21 @@ code {
 }
 
 @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
+    @apply text-slate-900 dark:text-slate-100;
+  }
   h1 {
-    @apply text-2xl dark:text-slate-100;
+    @apply text-2xl;
   }
   h2 {
-    @apply text-xl dark:text-slate-100;
+    @apply text-xl;
   }
 
   button {

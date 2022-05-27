@@ -751,6 +751,11 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
+generate-unique-id@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/generate-unique-id/-/generate-unique-id-2.0.1.tgz#144af6c339b1b3226d44568cdd8732c39cbd520d"
+  integrity sha512-8b74nVk9KOj3Go2NofqNhC+3VDJ/121oBa72tXnYVwFN785rVR4v2ccj3Hwcy4ZErIz+TJ4Rn1NZHh/JW/12qQ==
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
@@ -793,6 +798,11 @@ history@^5.2.0:
   integrity sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==
   dependencies:
     "@babel/runtime" "^7.7.6"
+
+immer@^9.0.14:
+  version "9.0.14"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.14.tgz#e05b83b63999d26382bb71676c9d827831248a48"
+  integrity sha512-ubBeqQutOSLIFCUBN03jGeOS6a3DoYlSYwYJTa+gSKEZKU5redJIqkIdZ3JVv/4RZpfcXdAWH5zCNLWPRv2WDw==
 
 is-binary-path@~2.1.0:
   version "2.1.0"
@@ -1142,6 +1152,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+use-immer@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/use-immer/-/use-immer-0.7.0.tgz#e3bfbb806b5e3ff6e37441be74c306d91c1e0962"
+  integrity sha512-Re4hjrP3a/2ABZjAc0b7AK9s626bnO+H33RO2VUhiDZ2StBz5B663K6WNNlr4QtHWaGUmvLpwt3whFvvWuolQw==
 
 util-deprecate@^1.0.2:
   version "1.0.2"

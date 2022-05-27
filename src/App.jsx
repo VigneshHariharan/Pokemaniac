@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeListing from "@components/main/PokeListing";
 import PokemonDetails from "@components/main/PokemonDetails";
+import PokeTeam from "@components/main/PokeTeam";
+
 import "./App.css";
 
 function App() {
@@ -20,6 +22,12 @@ function App() {
               // path="/:pokemon"
               element={<PokemonDetails />}
               key="pokeDetails"
+            />
+            <Route
+              path="/Pokemaniac/teams"
+              // path="/:pokemon"
+              element={<PokeTeam />}
+              key="pokeTeam"
             />
           </Route>
         </Routes>

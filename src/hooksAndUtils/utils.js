@@ -15,7 +15,6 @@ export const getImageUrlForPokemon = (pokemonName, order) => {
 
 export const setItemInCache = (key, value, replace = false) => {
   if (!localStorage.getItem(key) || replace) {
-    console.log('setItemInCache',value)
     localStorage.setItem(key, JSON.stringify(value))
   }
 }

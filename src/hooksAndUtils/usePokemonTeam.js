@@ -53,7 +53,6 @@ function PokemonTeams () {
 }
 
 const getPokemonTeamDefaultValue = () => {
-  console.log('f',getItemFromCache(pokemonTeamKey))
   return getItemFromCache(pokemonTeamKey) || new PokemonTeams()
 }
 
@@ -80,13 +79,18 @@ const setPokemonDetailsTeam = pokemon => {
 
 // Using console in reducer makes 
 const reducer = (state, action) => {
-      console.log(state,'state')
       const payload = action.payload || {}
       switch (action.type) {
         case actions.CREATE_TEAM:
-          state.teams[payload.teamId] = new PokemonTeam(payload.teamName);
-          state.teamOrder.push(payload.teamId);
-          return {...state};
+          const newTeamsCreated = { ...state.teams, [payload.teamId]:  new PokemonTeam(payload.teamName) }
+          const newTeamOrder = [...state.teamOrder, payload.teamId]
+          return {...state, teamOrder: newTeamOrder, teams:newTeamsCreated };
+
+        case actions.DELETE_TEAM:
+          const newTeamsOrder = state.teamOrder.filter((id) => id !== payload.teamId);
+          const newTeams = {...state.teams};
+          delete newTeams[payload.teamId]
+          return {...state, teamOrder: newTeamsOrder, teams: newTeams }
 
         case actions.ADD_POKEMON_TO_TEAM:
           // id should be created
@@ -128,7 +132,6 @@ export const usePokemonTeam = () => {
 
              timerId = setTimeout(() => {
               if(state){
-              console.log('-----state',updatedState)
                 setPokemonTeamDefaultValue(updatedState) 
               }
               shouldSetTimeout = true;
@@ -146,7 +149,6 @@ export const usePokemonTeam = () => {
 
 
   const addPokemonToTeam = (pokemon, teamId = 'teamOne') => {
-    console.log('addPokemonToTeam',state.teams[teamId].team.length  )
     if(state.teams[teamId].team.length >= 6) return false;
     dispatch({
       type: actions.ADD_POKEMON_TO_TEAM,
@@ -183,7 +185,17 @@ export const usePokemonTeam = () => {
     return true;
   }
 
+  const deleteTeam = (teamId) => {
+     dispatch({
+      type: actions.DELETE_TEAM,
+      payload: {
+        teamId
+      }
+    });
+    return true;
+  }
+
   
-  return { teams: state, addPokemonToTeam, deletePokemonFromTeam, createTeam }
+  return { teams: state, addPokemonToTeam, deletePokemonFromTeam, createTeam, deleteTeam }
 }
 

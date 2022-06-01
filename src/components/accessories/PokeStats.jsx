@@ -1,21 +1,24 @@
-const PokeStats = ({ stats }) => {
+const PokeStats = ({ stats, isDetailed = false }) => {
+  if (!stats) return null;
   const totalStats = stats.reduce(
     (result, statObj) => result + statObj.stat,
     0
   );
 
   // out of 600
+  if (!isDetailed)
+    return (
+      <div>
+        <p>Total Base Stats - {totalStats}</p>
+      </div>
+    );
+
   return (
     <div>
-      <p>Total Base Stats - {totalStats}</p>
-    </div>
-  );
-  return (
-    <div>
-      {statItems.map((stat) => (
-        <div className="stat-row">
-          <h6>{stat.statType?.toUpperCase()}</h6>
-          <p>{stat.statValue}</p>
+      {stats.map((statObj) => (
+        <div key={statObj.name}>
+          <h6>{statObj.name}</h6>
+          <p>{statObj.stat}</p>
         </div>
       ))}
     </div>

@@ -24,3 +24,18 @@ export const getItemFromCache = key => {
   if (item) return JSON.parse(item)
   return null
 }
+
+
+export const debounce = (func, delay) => {
+  let timeout;
+  return function(...args){
+    const caller = () => {
+      clearTimeout(timeout);
+      func(...args);
+    }
+
+    clearTimeout(timeout);
+    setTimeout(caller, delay)
+    
+  }
+}

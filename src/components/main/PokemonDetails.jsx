@@ -19,8 +19,6 @@ const PokemonDetails = () => {
   const { pokeDetails, isPokeDetailsLoading, detailsErrorMessage } =
     usePokemonDetails();
 
-  console.log("pokeDetails", pokeDetails);
-
   return (
     <div>
       <Navbar />
@@ -29,6 +27,7 @@ const PokemonDetails = () => {
         <div className="container">
           <div className="flex">
             <h2>{pokeDetails?.name || ""}</h2>
+
             <img
               src={pokeDetails?.pokemonFrontImage || "images/pokeball.svg"}
               alt={pokeDetails?.name + " image"}

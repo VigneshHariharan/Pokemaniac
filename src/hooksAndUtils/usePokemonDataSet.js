@@ -22,7 +22,7 @@ export const usePokemons = () => {
 
   // Only AND filters
   const handleFilters = useCallback(
-    ({ type }) => {
+    ({ type, name }) => {
       const newFilterTypes = [...typesFiltered]
       const currentPosOfType = newFilterTypes?.findIndex(
         existType => existType === type
@@ -47,7 +47,15 @@ export const usePokemons = () => {
 
       const newPokeListingsOrder = pokemonDataResponse.order?.filter(
         pokemonName => {
-          if (newFilterTypes?.length === 0) return true
+          // if (newFilterTypes?.length === 0) return true;
+
+          console.log("s",pokemonName.substring(0,name.length))
+          if(pokemonName.substring(0,name.length) === name) {
+            console.log("f",pokemonName.substring(0,name.length), name)
+
+          }
+          const stringMatch = pokemonName.substring(0,name.length)?.toUpperCase() === name?.toUpperCase();
+          if(stringMatch) return true
           const pokemon = pokeListing[pokemonName]
           for (let typeName of pokemon?.types) {
             if (newFilterTypes.includes(typeName)) {

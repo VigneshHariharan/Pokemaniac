@@ -16,11 +16,32 @@
 // Dragon;
 // Steel;
 // Fairy;
+
+const lightBgTypes = [
+  "ground",
+  "electric",
+  "rock",
+  "ice",
+  "normal",
+  "grass",
+  "fire",
+  "fairy",
+  "bug",
+  "flying",
+  "steel",
+];
 const PokemonType = ({ typeObj }) => {
   const typeName = typeObj;
+  const typeClass = "bg-types-" + typeName;
   return (
-    <div className="type">
-      <p className={`--type-${typeName}`}>{typeName?.toUpperCase()}</p>
+    <div className={`px-1 py-0 ${typeClass} rounded`}>
+      <p
+        className={
+          lightBgTypes?.includes(typeName) ? "!text-zinc-900" : "!text-zinc-50"
+        }
+      >
+        {typeName}
+      </p>
     </div>
   );
 };

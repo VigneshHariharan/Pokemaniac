@@ -6,6 +6,15 @@
     <title>Pokemanic</title>
     <meta name="PokeManiac" />
     <link href="./src/index.css" rel="stylesheet" />
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        !("color-theme" in localStorage)
+      ) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
+      }
+    </script>
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50">
     <div id="root"></div>

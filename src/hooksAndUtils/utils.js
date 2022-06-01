@@ -1,7 +1,7 @@
 export const getImageUrlForPokemon = (pokemonName, order) => {
   let name =
-    pokemonName?.slice(0, 1).toUpperCase() +
-    pokemonName?.slice(1, pokemonName?.length).toLowerCase()
+    pokemonName?.slice(0, 1)?.toUpperCase() +
+    pokemonName?.slice(1, pokemonName?.length)?.toLowerCase()
   name = '/Pokemaniac/docs' + '/images/pokemons/' + name
   let number = order
   if (order < 10) {

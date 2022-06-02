@@ -1,5 +1,5 @@
 import { usePokemons } from "@hooksAndUtils/usePokemonDataSet";
-import { debounce } from "@hooksAndUtils/utils";
+import { debounce, PokemonTypesClasses } from "@hooksAndUtils/utils";
 
 import { Navbar } from "@components/common";
 import PokemonCard from "@components/accessories/PokemonCard";
@@ -21,7 +21,7 @@ const PokeListing = () => {
   const onChange = debounce((event) => {
     const name = event.target.value;
     handleFilters({ name });
-  }, 400);
+  }, 300);
   console.log("pokemonTypes", pokemonTypes, typesFiltered);
   if (isListingLoading) return <div>Loading</div>;
 
@@ -37,21 +37,24 @@ const PokeListing = () => {
 
         <div className="my-4">
           <h4 className="mb-2 text-left">Filter By Pokemon Types </h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 outline-none">
             {pokemonTypes &&
-              pokemonTypes?.map(({ name }) => (
-                <button
-                  key={name}
-                  className={
-                    (typesFiltered?.includes(name)
-                      ? "btn-primary !bg-types-" + name
-                      : "btn-basic") + " rounded-sm px-2 border-none "
-                  }
-                  onClick={() => handleFilters({ type: name })}
-                >
-                  {name}
-                </button>
-              ))}
+              pokemonTypes?.map(({ name }) => {
+                const typeName = name;
+                return (
+                  <button
+                    key={typeName}
+                    className={
+                      (typesFiltered?.includes(typeName)
+                        ? `!bg-slate-700`
+                        : "btn-basic ") + " rounded-sm px-2 border-none "
+                    }
+                    onClick={() => handleFilters({ type: typeName })}
+                  >
+                    {typeName}
+                  </button>
+                );
+              })}
             <button
               className="!bg-slate-600 px-2 border-none"
               onClick={() => resetToDefaultFilters()}

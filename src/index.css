@@ -58,7 +58,11 @@ code {
   }
 
   input {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+    @apply bg-gray-50 border border-gray-300 text-gray-900
+    dark:outline-none
+     text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5
+      dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+    dark:focus:ring-slate-500 dark:focus:border-slate-500;
   }
 
   .btn-primary {
@@ -68,5 +72,10 @@ code {
 
   .container {
     @apply max-w-screen-xl mx-auto bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50;
+  }
+
+  th,
+  td {
+    @apply px-4 py-1;
   }
 }

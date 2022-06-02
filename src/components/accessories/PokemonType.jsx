@@ -37,7 +37,9 @@ const PokemonType = ({ typeObj }) => {
     <div className={`px-1 py-0 ${typeClass} rounded`}>
       <p
         className={
-          lightBgTypes?.includes(typeName) ? "!text-zinc-900" : "!text-zinc-50"
+          lightBgTypes?.includes(typeName)
+            ? "!text-zinc-900 capitalize"
+            : "!text-zinc-50 capitalize"
         }
       >
         {typeName}

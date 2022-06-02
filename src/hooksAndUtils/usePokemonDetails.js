@@ -31,6 +31,7 @@ export const buildPokemonDetails =  async (pokemonNameKey, pokemonDetailsData, s
 
 const constructPokemonEvolutionData = async (details, result = []) => {
 
+  console.log('constructPokemonEvolutionData : ',details)
   const evolutionObj = {
       name: details?.species?.name || "",
   };
@@ -43,6 +44,10 @@ const constructPokemonEvolutionData = async (details, result = []) => {
     evolutionObj.levelAt = evolutionDetails?.min_level;
     evolutionObj.trigger = evolutionDetails?.trigger?.name;
     evolutionObj.needsRain = evolutionDetails?.needs_overworld_rain || false;
+    evolutionObj.happiness = evolutionDetails?.min_happiness || 0;
+    evolutionObj.item = evolutionDetails?.held_item || "";
+    evolutionObj.timeOfDay = evolutionDetails?.time_of_day || "";
+
   }
 
   result.push(evolutionObj);
@@ -53,7 +58,6 @@ const constructPokemonEvolutionData = async (details, result = []) => {
 
 export const buildEvolutionChainDetails = (details, constructedData) => {
   const evolvedPokemons = [];
-
   constructPokemonEvolutionData(details, evolvedPokemons)
  
   return { ...constructedData, evolutionChain: evolvedPokemons }
@@ -107,6 +111,7 @@ export const usePokemonDetails = () => {
       const evolutionChain = await fetchPokemonEvolutionChainDetails(pokeSpecies?.data?.evolution_chain?.url);
     
       if(evolutionChain.data){
+        
         const data = buildEvolutionChainDetails(evolutionChain.data?.chain,constructedData);
         setPokeDetails(data);
       }

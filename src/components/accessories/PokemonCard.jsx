@@ -1,5 +1,4 @@
 import PokemonType from "@components/accessories/PokemonType";
-import PokeStats from "@components/accessories/PokeStats";
 
 const PokemonCard = (props) => {
   const { pokemon, handlePokemonDetails } = props;
@@ -9,6 +8,7 @@ const PokemonCard = (props) => {
       className="cursor-pointer
         pr-4 py-2
         pl-2
+        outline-1
        rounded-sm transition-all ease-in-out delay-2  hover:bg-slate-100 hover:dark:bg-slate-800"
       onClick={() => handlePokemonDetails(pokemon.name)}
     >

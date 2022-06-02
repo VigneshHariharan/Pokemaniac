@@ -8,6 +8,7 @@ const PokemonSpritiesLayout = ({ sprities, pokemonName }) => {
     );
     return commonSprities;
   }, [sprities]);
+
   return (
     <div className="flex flex-wrap gap-2">
       {images?.map(([type, image]) => (

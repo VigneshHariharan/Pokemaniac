@@ -2,7 +2,8 @@ import { useState, useCallback, useEffect, useMemo } from 'react'
 import {
   fetchPokemonDetailsByName,
   fetchAllPokemonWithDetails,
-  fetchAllPokemonTypes
+  fetchAllPokemonTypes,
+
 } from './pokemonDataHandlers'
 import { useNavigate } from 'react-router-dom'
 
@@ -22,7 +23,7 @@ export const usePokemons = () => {
 
   // Only AND filters
   const handleFilters = useCallback(
-    ({ type, name }) => {
+    ({ type, name = '' }) => {
       const newFilterTypes = [...typesFiltered]
       const currentPosOfType = newFilterTypes?.findIndex(
         existType => existType === type
@@ -32,7 +33,6 @@ export const usePokemons = () => {
       } else {
         newFilterTypes.push(type)
       }
-      setTypesFiltered(newFilterTypes)
 
       // const newPokeListings = Object.entries(pokeListing).reduce((result, [pokemonKey, pokemon]) => {
       //     console.log('oke', pokemon, newFilterTypes)
@@ -47,33 +47,39 @@ export const usePokemons = () => {
 
       const newPokeListingsOrder = pokemonDataResponse.order?.filter(
         pokemonName => {
-          // if (newFilterTypes?.length === 0) return true;
 
-          console.log("s",pokemonName.substring(0,name.length))
-          if(pokemonName.substring(0,name.length) === name) {
-            console.log("f",pokemonName.substring(0,name.length), name)
+          const stringMatch = name?.length === 0 || pokemonName.substring(0,name?.length)?.toUpperCase() === (name?.toUpperCase() || '');
+          let isTypeAvailable = false;          
 
-          }
-          const stringMatch = pokemonName.substring(0,name.length)?.toUpperCase() === name?.toUpperCase();
-          if(stringMatch) return true
-          const pokemon = pokeListing[pokemonName]
+          const pokemon = pokeListing[pokemonName]         
           for (let typeName of pokemon?.types) {
             if (newFilterTypes.includes(typeName)) {
               // return { ...result, [pokemonKey]: pokemon }
-              return true
+              isTypeAvailable = true;
             }
           }
-          return false
+
+          // if(stringMatch) return true;
+            // if (newFilterTypes?.length === 0) return true;
+
+          let typeConsideration = newFilterTypes?.length === 0 || isTypeAvailable;
+
+
+          console.log('typeConsideration',typeConsideration,newFilterTypes,stringMatch,pokemonName.substring(0,name?.length)?.toUpperCase(),name)
+          return typeConsideration && stringMatch
         }
       )
       const newPokeListings = { ...pokeListing, order: newPokeListingsOrder }
       setPokeListing(newPokeListings)
+      setTypesFiltered(newFilterTypes)
+
     },
     [typesFiltered, pokeListing]
   )
 
   const resetToDefaultFilters = () => {
-    setPokeListing(pokemonDataResponse)
+    setPokeListing(pokemonDataResponse);
+    setTypesFiltered([])
   }
 
   useEffect(function getPokemonListingData () {

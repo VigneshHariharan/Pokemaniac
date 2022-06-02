@@ -5,6 +5,7 @@ module.exports = {
   content: ['./src/index.html','./src/**/*.{html,css,js,jsx}',
   './node_modules/tw-elements/dist/js/**/*.js',
   "./src/hooksAndUtils/utils.js",
+  
   ],
   // plugins: [require('tw-elements/dist/plugin')],
   // for dynamic css
@@ -15,7 +16,7 @@ module.exports = {
     }
 ],
   // mode: 'jit',
-  purge: ['./public/**/*.html', './src/**/*.{css,js,jsx,ts,tsx}'],
+  // purge: ['./public/**/*.html', './src/**/*.{css,js,jsx,ts,tsx}'],
   darkMode:'class',
   theme: {
     extend: {

@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeListing from "@components/main/PokeListing";
 import PokemonDetails from "@components/main/PokemonDetails";
 import PokeTeam from "@components/main/PokeTeam";
-import "tw-elements";
 import "./App.css";
+import "./index.css";
 
 function App() {
   return (

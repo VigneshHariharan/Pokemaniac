@@ -42,7 +42,6 @@ export class PokemonTeam {
 
   deletePokemon (details) {
     this.team = this.team.filter(pokemon => details.name !== pokemon.name)
-    console.log(this.team, details)
     this.updateDataToStorage()
   }
 

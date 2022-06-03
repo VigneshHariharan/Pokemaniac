@@ -1,8 +1,8 @@
 const API_URL = 'https://pokeapi.co/api/v2'
 const fetchAllPokemonWithDetailsKey = 'allPokemonKeys'
 const typeKey = 'types'
-import allPokemonKeys from '@data/allPokemonKeys.json'
-import allMoveKeys from '@data/allMoves.json'
+// import allPokemonKeys from '@data/allPokemonKeys.json'
+// import allMoveKeys from '@data/allMoves.json'
 
 import { setItemInCache, getItemFromCache } from './utils'
 
@@ -50,20 +50,22 @@ export const fetchPokemonSpeciesDetailsByName = async name => {
 export const fetchAllPokemonWithDetails = async () => {
   // const cachedData = await getItemFromCache(fetchAllPokemonWithDetailsKey);
   // if (cachedData) return cachedData
-  const cachedData = await allPokemonKeys
-  if (cachedData) return cachedData
+  // const cachedData = await allPokemonKeys
+  // if (cachedData) return cachedData
 
   // const pokemonData = await data.json()
-  const pokemons = await fetchAllPokemons()
-  let pokemonData = pokemons.data.results
-  const pokemonNames = pokemonData.map(pokemon => pokemon.name)
-  const detailPromises = pokemonNames.map(name =>
-    fetchPokemonDetailsByName(name)
-  )
+  // const pokemons = await fetchAllPokemons()
+  // let pokemonData = pokemons.data.results
+  // const pokemonNames = pokemonData.map(pokemon => pokemon.name)
+  // const detailPromises = pokemonNames.map(name =>
+  //   fetchPokemonDetailsByName(name)
+  // );
+  const url = "https://raw.githubusercontent.com/VigneshHariharan/Pokemaniac/main/src/data/allPokemonKeys.json";
   try {
-    const allPokemonDetails = await Promise.all(detailPromises)
-    setItemInCache(fetchAllPokemonWithDetailsKey, allPokemonDetails)
-    return { data: allPokemonDetails.data, error: '' }
+    const allPokemonDetailsRaw = await fetch(url);
+    const allPokemonDetails = await allPokemonDetailsRaw.json();
+    // setItemInCache(fetchAllPokemonWithDetailsKey, allPokemonDetails)
+    return { data: allPokemonDetails, error: '' }
   } catch (err) {
     console.log('Error while running fetchAllPokemonWithDetails :', err)
     return { data: [], error: err }
@@ -110,6 +112,16 @@ export const fetchPokemonEvolutionChainDetails = async (url) => {
 
 export const fetchAllPokemonMoves = async () => {
 
-  const moves = await allMoveKeys;
-  return moves
+  const url = "https://raw.githubusercontent.com/VigneshHariharan/Pokemaniac/main/src/data/allMoves.json";
+  try {
+    const movesRawData = await fetch(url)
+    const moves = await movesRawData.json();
+
+    const result = moves;
+
+    return { data: result, errorMessage: '' }
+  } catch (err) {
+    console.log('Error at ', url, err)
+    return { data: null, errorMessage: err }
+  }
 };

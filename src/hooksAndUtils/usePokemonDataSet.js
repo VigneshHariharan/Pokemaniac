@@ -31,7 +31,9 @@ export const usePokemons = () => {
       if (currentPosOfType > -1) {
         newFilterTypes.splice(currentPosOfType, 1)
       } else {
-        newFilterTypes.push(type)
+        if(type){
+          newFilterTypes.push(type)
+        }
       }
 
       // const newPokeListings = Object.entries(pokeListing).reduce((result, [pokemonKey, pokemon]) => {
@@ -79,7 +81,7 @@ export const usePokemons = () => {
 
   const resetToDefaultFilters = () => {
     setPokeListing(pokemonDataResponse);
-    setTypesFiltered([])
+    setTypesFiltered([]);
   }
 
   useEffect(function getPokemonListingData () {
@@ -90,8 +92,8 @@ export const usePokemons = () => {
         await fetchAllPokemonTypes()
       ])
       setIsDataLoading(false)
-      setPokeListing(pokemons)
-      setPokemonDataResponse(pokemons)
+      setPokeListing(pokemons.data)
+      setPokemonDataResponse(pokemons.data)
       setIsListingErrorMessage(pokemons.errorMessage)
       setPokemonTypes(pokemonTypesData.data)
       // for other data

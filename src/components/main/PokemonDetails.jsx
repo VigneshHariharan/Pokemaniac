@@ -2,22 +2,15 @@ import { usePokemonDetails } from "@hooksAndUtils/usePokemonDetails";
 // import { use } from "react-router-dom";
 import { Navbar } from "@components/common";
 import { usePokemonTeam } from "@hooksAndUtils/usePokemonTeam";
-import { usePokemons } from "@hooksAndUtils/usePokemonDataSet";
-import { Link } from "react-router-dom";
 import {
   PokeStats,
   PokemonType,
-  PokemonDescription,
-  PokemonSpritiesLayout,
   PokemonMoves,
   EvolutionChain,
 } from "@components/accessories";
-import { dynamicColors } from "@hooksAndUtils/utils";
 
-const pokemonTypeColors = dynamicColors.types;
 const PokemonDetails = () => {
   const { addPokemonToTeam, pokeTeam, teams } = usePokemonTeam();
-  const { pokeListing } = usePokemons();
   const { pokeDetails, isPokeDetailsLoading, detailsErrorMessage } =
     usePokemonDetails();
 
@@ -26,7 +19,7 @@ const PokemonDetails = () => {
       <Navbar />
       {isPokeDetailsLoading && <div>Loading</div>}
       {!isPokeDetailsLoading && (
-        <div className="container px-4">
+        <div className="container px-4 pt-4">
           <div className="flex items-center flex-wrap gap-x-12 mb-8">
             <div className="flex flex-col items-center pb-4 mx-auto">
               {!!pokeDetails?.pokemonFrontImage && (

@@ -16,7 +16,7 @@ const PokemonCard = (props) => {
         <div className="w-28 h-28 min-w-[7rem]">
           <img
             src={pokemon?.sprites?.front_default || "images/pokeball.svg"}
-            alt={pokemon.name + " image"}
+            alt={pokemon?.name + " image"}
             className="block"
           />
         </div>

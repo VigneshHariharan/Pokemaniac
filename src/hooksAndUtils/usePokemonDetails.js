@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState,  useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchPokemonDetailsByName,fetchPokemonEvolutionChainDetails, fetchPokemonSpeciesDetailsByName,fetchAllPokemons, fetchAllPokemonWithDetails } from './pokemonDataHandlers'
 
@@ -10,7 +10,7 @@ export const buildPokemonDetails =  async (pokemonNameKey, pokemonDetailsData, s
   const pokemonDescriptionEntries = speciesData?.flavor_text_entries;
   const habitat = speciesData?.habitat?.name || "";
   const allPokemonsRaw = await fetchAllPokemonWithDetails();
-  const allPokemons = await allPokemonsRaw;
+  const allPokemons = allPokemonsRaw.data;
   // let evolvedFrom= speciesData?.evolves_from_species?.name;
 
   const pokemonListData  = allPokemons[pokemonNameKey];
@@ -31,12 +31,11 @@ export const buildPokemonDetails =  async (pokemonNameKey, pokemonDetailsData, s
 
 const constructPokemonEvolutionData = async (details, result = []) => {
 
-  console.log('constructPokemonEvolutionData : ',details)
   const evolutionObj = {
       name: details?.species?.name || "",
   };
   const allPokemonsRaw = await fetchAllPokemonWithDetails();
-  const allPokemons = await allPokemonsRaw;
+  const allPokemons = allPokemonsRaw.data;
   evolutionObj.listDetails = allPokemons[evolutionObj.name];
 
   if(details?.evolution_details?.length > 0){
@@ -110,6 +109,7 @@ export const usePokemonDetails = () => {
 
       const evolutionChain = await fetchPokemonEvolutionChainDetails(pokeSpecies?.data?.evolution_chain?.url);
     
+
       if(evolutionChain.data){
         
         const data = buildEvolutionChainDetails(evolutionChain.data?.chain,constructedData);

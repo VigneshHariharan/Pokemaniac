@@ -153,6 +153,5 @@ const constructTypes = types => {
   for(let type of types){
     result[type.name] = { bg: 'bg-types-' + type.name, text: 'text-types-' + type.name  }
   }
-  console.log(result);
   window.copy(result)
 }

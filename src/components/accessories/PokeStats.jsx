@@ -10,7 +10,6 @@ const PokeStats = ({ stats, isDetailed = false }) => {
       <h4 className="mb-1 text-left">Base Stats: </h4>
       {stats.map((statObj) => {
         const statPercentage = Math.floor((statObj.stat / 600) * 100);
-        console.log(statPercentage, "statPercent");
 
         return (
           <div
@@ -32,24 +31,6 @@ const PokeStats = ({ stats, isDetailed = false }) => {
       })}
     </div>
   );
-  //   return (
-  //     <table>
-  //       <thead>
-  //         <tr>
-  //           {statItems.map((stat) => (
-  //             <th>{stat?.statType}</th>
-  //           ))}
-  //         </tr>
-  //       </thead>
-  //       <tbody>
-  //         <tr>
-  //           {statItems.map((stat) => (
-  //             <td>{stat?.statValue}</td>
-  //           ))}
-  //         </tr>
-  //       </tbody>
-  //     </table>
-  //   );
 };
 
 export default PokeStats;

@@ -2,7 +2,6 @@ import { PokemonCard } from "@components/accessories";
 
 const EvolutionChain = ({ evolutionDetails }) => {
   if (!evolutionDetails || evolutionDetails?.length <= 0) return null;
-  console.log("evolutionDetails", evolutionDetails);
   return (
     <div className="mb-4">
       <h4 className="text-left">Evolution Chain</h4>

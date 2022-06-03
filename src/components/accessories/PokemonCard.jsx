@@ -18,6 +18,9 @@ const PokemonCard = (props) => {
             src={pokemon?.sprites?.front_default || "images/pokeball.svg"}
             alt={pokemon?.name + " image"}
             className="block"
+            loading="lazy"
+            width={"112"}
+            height={"112"}
           />
         </div>
         <div className="flex flex-col gap-y-2">

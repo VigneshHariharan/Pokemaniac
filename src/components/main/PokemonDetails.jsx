@@ -2,6 +2,7 @@ import { usePokemonDetails } from "@hooksAndUtils/usePokemonDetails";
 // import { use } from "react-router-dom";
 import { Navbar } from "@components/common";
 import { usePokemonTeam } from "@hooksAndUtils/usePokemonTeam";
+import { Loader } from "@components/common";
 import {
   PokeStats,
   PokemonType,
@@ -17,7 +18,7 @@ const PokemonDetails = () => {
   return (
     <div>
       <Navbar />
-      {isPokeDetailsLoading && <div>Loading</div>}
+      {isPokeDetailsLoading && <Loader text="Loading" />}
       {!isPokeDetailsLoading && (
         <div className="container px-4 pt-4">
           <div className="flex items-center flex-wrap gap-x-12 mb-8">

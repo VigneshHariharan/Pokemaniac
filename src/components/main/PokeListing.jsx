@@ -2,6 +2,7 @@ import { usePokemons } from "@hooksAndUtils/usePokemonDataSet";
 import { debounce, PokemonTypesClasses } from "@hooksAndUtils/utils";
 import { Navbar } from "@components/common";
 import PokemonCard from "@components/accessories/PokemonCard";
+import { Loader } from "@components/common";
 
 const PokeListing = () => {
   const {
@@ -21,11 +22,11 @@ const PokeListing = () => {
     const name = event.target.value;
     handleFilters({ name });
   }, 300);
-  if (isListingLoading) return <div>Loading</div>;
 
   return (
     <div>
       <Navbar />
+      {isListingLoading && <Loader />}
       {!isListingLoading && (
         <div className="container md:px-8 px-4 w-full">
           <div className="my-4">
@@ -62,11 +63,10 @@ const PokeListing = () => {
           </div>
 
           {pokeListing?.order?.length === 0 && (
-            <div>
+            <div className="flex h-full justify-center items-stretch">
               <p>No results</p>
             </div>
           )}
-
           {/* <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 mt-4"> */}
           <div className="flex flex-wrap gap-2">
             {pokeListing.order?.map((pokemonName, index) => {

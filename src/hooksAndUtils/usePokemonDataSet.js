@@ -3,7 +3,6 @@ import {
   fetchPokemonDetailsByName,
   fetchAllPokemonWithDetails,
   fetchAllPokemonTypes,
-
 } from './pokemonDataHandlers'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,17 +35,6 @@ export const usePokemons = () => {
         }
       }
 
-      // const newPokeListings = Object.entries(pokeListing).reduce((result, [pokemonKey, pokemon]) => {
-      //     console.log('oke', pokemon, newFilterTypes)
-      //     if (!pokemon.types) return { ...result, order: pokemon };
-      //     for (let typeName of pokemon?.types) {
-      //         if (newFilterTypes.includes(typeName)) {
-      //             return { ...result, [pokemonKey]: pokemon }
-      //         }
-      //     }
-      //     return result
-      // }, {});
-
       const newPokeListingsOrder = pokemonDataResponse.order?.filter(
         pokemonName => {
 
@@ -61,13 +49,9 @@ export const usePokemons = () => {
             }
           }
 
-          // if(stringMatch) return true;
-            // if (newFilterTypes?.length === 0) return true;
 
           let typeConsideration = newFilterTypes?.length === 0 || isTypeAvailable;
 
-
-          console.log('typeConsideration',typeConsideration,newFilterTypes,stringMatch,pokemonName.substring(0,name?.length)?.toUpperCase(),name)
           return typeConsideration && stringMatch
         }
       )
@@ -96,9 +80,6 @@ export const usePokemons = () => {
       setPokemonDataResponse(pokemons.data)
       setIsListingErrorMessage(pokemons.errorMessage)
       setPokemonTypes(pokemonTypesData.data)
-      // for other data
-      // const firstDefaultData = pokemons?.data?.results[0];
-      // handlePokemonDetails(firstDefaultData?.name)
     }
     getData()
   }, [])
